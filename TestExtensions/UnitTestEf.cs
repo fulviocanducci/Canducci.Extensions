@@ -5,7 +5,7 @@ namespace TestExtensions
     [TestClass]
     public class UnitTestEf
     {
-        internal SQLiteContext SQLiteContext = SQLiteContextFabric.Instancia;
+        internal SQLiteContext SQLiteContext = SQLiteContextFabric.Instance;
 
         [TestMethod()]
         public void TestEfGroupSum()

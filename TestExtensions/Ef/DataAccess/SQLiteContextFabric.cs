@@ -2,10 +2,13 @@
 {
     public static class SQLiteContextFabric
     {
-        static SQLiteContext _instancia;
-        public static SQLiteContext Instancia
+        internal static SQLiteContext _instance;
+        public static SQLiteContext Instance
         {
-            get { return _instancia ?? (_instancia = new SQLiteContext()); }
+            get 
+            { 
+                return _instance ??= new SQLiteContext(); 
+            }
         }
     }
 }
