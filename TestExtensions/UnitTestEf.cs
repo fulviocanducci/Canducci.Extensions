@@ -17,6 +17,17 @@ namespace TestExtensions
             Assert.AreEqual(sum, 600D);
         }
 
+        [TestMethod()]
+        public void TestEfGroupCountSum()
+        {
+            var objectGroup = SQLiteContext.People
+                .Group()
+                .Select(s => new { Count = s.Count(), Sum = s.Sum(p => p.Value) })
+                .FirstOrDefault();
+            Assert.AreEqual(objectGroup.Count, 3);
+            Assert.AreEqual(objectGroup.Sum, 600D);
+        }
+
 
         [TestMethod]
         public void TestEfGroupCount()
