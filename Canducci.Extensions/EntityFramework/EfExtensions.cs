@@ -1,5 +1,4 @@
-﻿using Canducci.Extensions.EntityFramework;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
 namespace Canducci.Extensions.EntityFramework
@@ -14,6 +13,6 @@ namespace Canducci.Extensions.EntityFramework
         public static IQueryable<TResult> Group<T, TResult>(this IQueryable<T> query, Expression<Func<IGrouping<char, T>, TResult>> selector)
         {
             return query.Group().Select(selector);
-        }        
+        }
     }
 }
