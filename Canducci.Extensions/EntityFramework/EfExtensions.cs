@@ -1,34 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Canducci.Extensions.EntityFramework;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 namespace Canducci.Extensions.EntityFramework
 {
     public static class EfExtensions
     {
-        public static IQueryable<IGrouping<long, T>> Group<T>(this IQueryable<T> query)
+        public static IQueryable<IGrouping<char, T>> Group<T>(this IQueryable<T> query)
         {
-            return query.GroupBy(g => 1L);
+            return query.GroupBy(g => 'c');
         }
 
-        public static IQueryable<TResult> Group<T, TResult>(this IQueryable<T> query, Expression<Func<IGrouping<long, T>, TResult>> select)
+        public static IQueryable<TResult> Group<T, TResult>(this IQueryable<T> query, Expression<Func<IGrouping<char, T>, TResult>> selector)
         {
-            return query.Group().Select(select);
-        }
-
-        public static IEnumerable<TResult> Group<T, TResult>(this IQueryable<T> query, Func<IGrouping<long, T>, TResult> select)
-        {
-            return query.Group().Select(select);
-        }
-
-        public static IQueryable<TResult> Group<T, TResult>(this IQueryable<T> query, Expression<Func<IGrouping<long, T>, int, TResult>> select)
-        {
-            return query.Group().Select(select);
-        }
-
-        public static IEnumerable<TResult> Group<T, TResult>(this IQueryable<T> query, Func<IGrouping<long, T>, int, TResult> select)
-        {
-            return query.Group().Select(select);
-        }
+            return query.Group().Select(selector);
+        }        
     }
 }
